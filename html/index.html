@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <title>eelテスト</title>
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <h2>eelテスト</h2>
+        <p>
+            <p>CSVファイル名：<input type="text" id="csvPath"></p>
+            <p>検索ワード：<input type="text" id="keyword"></p>
+            <button id = "search">検索</button>
+        </p>
+        <p>
+            <textarea id="result" class="result"></textarea>
+        </p>
+
+        <script type="text/javascript" src="./eel.js"></script>
+        <script>
+            search.addEventListener('click', () => {
+                var csvPath = document.getElementById("csvPath").value.trim();
+                var keyword = document.getElementById("keyword").value.trim();                
+
+                if(csvPath.length == 0){
+                    alert("CSVファイル名を入力してください。");
+                }else{
+                    if(keyword.length == 0){
+                        alert("検索ワードを入力してください。");
+                    }else{
+                        eel.kimetsu_search(keyword,csvPath);
+                    }
+                }
+            });
+
+            eel.expose(view_log_js)
+            function view_log_js(text){
+                document.getElementById("result").innerHTML += text + "\n";
+            }
+
+            eel.expose(view_err_js)
+            function view_err_js(){
+                alert("CSVファイルは見つかりませんでした。");
+            }
+        </script>
+    </body>
+</html>
