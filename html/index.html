@@ -18,16 +18,16 @@
         <script type="text/javascript" src="./eel.js"></script>
         <script>
             search.addEventListener('click', () => {
-                var csvPath = document.getElementById("csvPath").value.trim();
-                var keyword = document.getElementById("keyword").value.trim();                
+                var wrk_csvPath = csvPath.value;
+                var wrk_keyword = keyword.value;
 
-                if(csvPath.length == 0){
+                if(wrk_csvPath.length == 0){
                     alert("CSVファイル名を入力してください。");
                 }else{
-                    if(keyword.length == 0){
+                    if(wrk_keyword.length == 0){
                         alert("検索ワードを入力してください。");
                     }else{
-                        eel.kimetsu_search(keyword,csvPath);
+                        eel.kimetsu_search(wrk_keyword,wrk_csvPath);
                     }
                 }
             });
